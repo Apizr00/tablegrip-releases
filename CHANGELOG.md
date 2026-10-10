@@ -3,6 +3,12 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.0.2] - 2026-10-11
+
+### Fixed
+- **Release notes showed stray asterisks.** Text written between single stars in the update window's notes and in
+  What's new is now shown in italics instead of with the stars around it.
+
 ## [1.0.1] - 2026-10-11
 
 ### Added

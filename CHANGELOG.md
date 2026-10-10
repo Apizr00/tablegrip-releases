@@ -3,6 +3,12 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [0.9.7] - 2026-10-10
+
+### Fixed
+- **Dialogs can be moved.** About, Preferences, Export, Import, Open connection, Confirm and Prompt are borderless windows
+  and could not be dragged. Drag any empty part of a dialog to move it; buttons, inputs and lists behave as before.
+
 ## [0.9.6] - 2026-10-10
 
 ### Fixed

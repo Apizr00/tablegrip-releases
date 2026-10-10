@@ -1,0 +1,109 @@
+# Changelog
+
+All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
+follow [Semantic Versioning](https://semver.org/).
+
+## [0.9.6] - 2026-10-10
+
+### Fixed
+- **Check for updates and the Help links work for everyone.** 0.9.5 looked for updates in the source repository, which is
+  private, so every check ended with "404 (Not Found)". Downloads, the update feed, the user guide, the changelog and the
+  issue tracker now live in the public `Apizr00/tablegrip-releases` repository, and the app uses that address.
+- The update prompt shows the release notes.
+
+### Note
+- Copies of 0.9.5 and older still look at the old address: install 0.9.6 once with the installer; updates work from then on.
+
+## [0.9.5] - 2026-10-10
+
+### Fixed
+- **Check for updates works out of the box.** With no update address set it used to only say "No update address is set".
+  It now looks at the project's GitHub releases when you ask (Help > Check for updates, or *Check now* in Preferences),
+  asks before downloading, and restarts to install a small delta package. An address you enter still takes priority, and
+  `github.com/owner/repo` addresses are understood. The start-up check stays opt-in and off by default.
+- Releases now carry the update feed files (`releases.<rid>.json` and the `.nupkg` packages) next to the installers; see
+  `docs/release.md`.
+
+## [0.9.4] - 2026-10-10
+
+### Added
+- **Copy as** in the results grid's right-click menu: copy the selected cells with a header line (tab-separated, **Ctrl+Shift+C**),
+  as CSV, as JSON, or as SQL INSERT statements in the connection's dialect. Rows keep the order on screen.
+
+## [0.9.3] - 2026-10-10
+
+### Changed
+- **Several connections open at once in one window.** The connection button now opens the picked connection next to the
+  current one instead of in a new window. A rail of connection tabs on the left (shown from two connections on) switches
+  between them; each connection keeps its own sidebar, tabs and unsaved changes. The window's **X** closes the active
+  connection, then the next, then the application.
+- The "open another connection" button shows a database with a plus instead of a power symbol.
+
+## [0.9.2] - 2026-10-10
+
+### Added
+- **Select several tables** in the sidebar (Ctrl+click, Shift+click, **Ctrl+A**) and export their data together: one file per
+  table (CSV, JSON, Excel) or one SQL script, with a right-click menu (open in new tab, open structure, copy name, export).
+- **Search in every table**: Ctrl+F focuses the search box of the open table or query result; query results get a
+  search box that narrows the loaded rows and shows how many match.
+- **Open another connection** from the connection button in the title bar: a searchable list (Open connection) that opens the
+  chosen connection in a **new window**, so several connections can be used at the same time. **New...** starts the new-connection
+  flow in a new window.
+
+### Changed
+- The window's **X** button closes the connection first and returns to the start screen; pressing it again closes the
+  application. (Alt+F4 still closes the window at once.)
+- Polished header and footer: an environment chip and styled engine / database text in the connection pill, a segmented
+  Data | Structure switch, a connection indicator, and a grouped pager with the query time in the footer.
+- The filter panel is one line per condition (column, operator, value, Apply, remove, add).
+
+## [0.9.1] - 2026-10-10
+
+### Added
+- **Backup database** and **Restore databases** on the start screen: a whole database as one SQL script (structure and
+  rows, foreign-key order) and a restore that runs a script as one transaction, with confirmation and safe-mode checks.
+- **Export / Import connections** (JSON, never containing passwords) and a right-click menu on the connection list
+  (New, Export Connections, Import Connections).
+- Application menu (**⋮**) on the start screen: File, View, Tools, Help, and an **About TableGrip** window.
+
+### Changed
+- The start screen no longer shows the line of keyboard hints under the buttons (the shortcuts still work and are in the menu).
+
+## [0.9.0] - 2026-10-10
+
+First release candidate: every planned feature is in. What is left before 1.0 is outside the code: a real code-signing
+certificate, a test on a clean machine, and a hosted update feed (see `docs/release.md`).
+
+### Added
+- **Databases:** SQLite, MySQL / MariaDB, PostgreSQL and SQL Server. One connection opens one database.
+- **Start screen** with saved connections (groups, environment tags, colours), recent files, drag-and-drop of database files.
+- **Table browser:** server-side sorting and filtering, paging, a Structure tab (columns, keys, indexes, DDL), a details panel for the selected row.
+- **Editing:** inline edits staged and reviewed as SQL before they are written, in one transaction; undo and redo; insert, duplicate and delete rows.
+- **SQL editor:** syntax highlighting, autocomplete that knows the tables and aliases in the statement, run statement / selection / script, cancel, query history, saved queries.
+- **Export** to CSV, JSON, SQL and Excel; **import** from CSV with column mapping and validation before anything is written.
+- **Command palette** (Ctrl+K) and **search everything** (Ctrl+P); light, dark and system themes; preferences.
+- **SSH tunnels** (password or key, host keys remembered with trust-on-first-use), **TLS modes** (disabled to verify-identity),
+  **safe mode** per connection (confirm changes, read-only), **Windows Integrated Authentication** for SQL Server.
+- **Windows 10 / 11 integration:** per-monitor DPI awareness, remembered window position that survives a disconnected
+  monitor, x64 and ARM64 builds, installer with automatic updates.
+- **Opt-in diagnostics:** crash report files (no queries, no data) and update checks. Both are off by default.
+
+### Changed
+- New application icon and logo (installer, taskbar, start screen, dialogs).
+
+### Security
+- Passwords and SSH secrets are stored only in `secrets.json`, encrypted for the current Windows user (DPAPI).
+- Query history masks `IDENTIFIED BY '...'`, `PASSWORD '...'` and similar literals.
+- Error messages from drivers are scrubbed of `Password=` / `Pwd=` values before they are shown.
+
+### Accessibility
+- Every control has a name for screen readers; list entries are announced with their meaning (table, view, connection and environment).
+- Toolbar buttons are reachable with Tab and show a focus ring; clicking them with the mouse does not steal the editor's focus.
+- Text colours meet WCAG AA contrast (4.5:1) in both themes; a test keeps them that way.
+
+### Fixed
+- Closing the app showed an "unexpected problem" dialog (the service container was disposed synchronously).
+- On a second monitor the window jumped to the primary monitor when a database was opened, and could start partly off screen.
+
+### Known limitations
+See the end of `docs/architecture.md`.

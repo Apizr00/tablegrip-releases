@@ -3,6 +3,23 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] - 2026-10-11
+
+### Added
+- **Snippets.** Type a trigger word and press Tab (or pick it from the suggestions) to insert a snippet with places to
+  type: `${1:name}` fields, Tab to move on, `$0` for where the caret ends. Eight starters ship (`sel`, `ins`, `upd`,
+  `del`, `join`, `grp`, `dup`, `selc`); add your own from Snippets in the workspace menu, or save the selected SQL as one.
+- **Production lock.** On a connection tagged production, destructive statements, committed row deletes and restores ask
+  for the connection's name to be typed. Preferences > Safety turns it off.
+- **Column insights.** Analyze columns on the Structure side shows each column's share of NULLs, distinct values, and
+  smallest and largest value; the table and its indexes show their size where the engine says it.
+- **Find usages.** Right-click a table in the sidebar or a column on the Structure side: the foreign keys to and from it
+  and the views, routines and triggers that mention it.
+- **More filter operators, in groups.** The filter's operator list now reads `=` `<>` `<` `>` `<=` `>=`, `IN` / `NOT IN`,
+  `IS NULL` / `IS NOT NULL`, `BETWEEN` / `NOT BETWEEN`, `LIKE`, then Contains, Not contains, Has prefix and Has suffix,
+  with a divider between the groups. `IN` takes a list (commas or lines, quotes for a value with a comma), `BETWEEN` gets a
+  second box, and `LIKE` is your own pattern.
+
 ## [1.1.0] - 2026-10-11
 
 ### Added

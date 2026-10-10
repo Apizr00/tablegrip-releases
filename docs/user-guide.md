@@ -49,6 +49,11 @@ ones are marked) and **Read-only** (writes are refused). Marking a connection *p
 Safe mode is a guard against mistakes, not a security boundary: for a hard guarantee use a database account without
 write privileges.
 
+**Production lock.** On a connection tagged *production*, a destructive statement (`DROP`, `TRUNCATE`, `UPDATE` or
+`DELETE` without a `WHERE`), committing deleted rows, and restoring a backup each ask you to **type the connection's
+name** before they go on, instead of just clicking OK. Turn it off in Preferences > Safety. Read-only connections still
+refuse writes.
+
 ## Backup and restore
 
 On the start screen, **Backup database...** and **Restore databases...** work on any saved connection (or a recent
@@ -104,7 +109,10 @@ screen, and one more press closes the application. If any open connection has un
 - **Search** every table: **Ctrl+F** puts the cursor in the search box of the open table (server side, all columns), or of a
   query result (the loaded rows, with a "12 of 250 rows" count). Ctrl+F in the sidebar filters the list of tables.
 - **Filter** with conditions (column, operator, value; **+** adds a line, **-** removes it) or the quick search; filters apply
-  to the whole table, and to export.
+  to the whole table, and to export. The operators are listed in groups: `=` `<>` `<` `>` `<=` `>=`; `IN` / `NOT IN` (values
+  separated by commas or lines; put quotes around a value that contains a comma); `IS NULL` / `IS NOT NULL`; `BETWEEN` /
+  `NOT BETWEEN` (two boxes, both ends included); `LIKE` (your own pattern: `%` any text, `_` one character); and the plain
+  text searches *Contains*, *Not contains*, *Has prefix* and *Has suffix*, which treat `%` and `_` as ordinary characters.
 - **Edit** a cell by double-clicking or pressing F2. Changes are *staged* (coloured) until you commit. **Preview** shows
   the exact SQL; **Commit** writes it in one transaction, and nothing is saved if one statement fails.
   Tables without a primary key are read-only.
@@ -121,6 +129,14 @@ screen, and one more press closes the application. If any open connection has un
   does not equal, contains, is NULL, is not NULL, or clear), *Follow relationship*, *Import CSV*, *Export rows* and
   *Delete row*. The menu acts on the cell under the pointer.
 - **Structure** shows columns, keys, indexes and the CREATE statement.
+- **Analyze columns** (Structure side) counts, for every column, the share of NULLs, the distinct values and the smallest
+  and largest value. It only reads; a table of more than two million rows is analyzed on its first 200,000. The Structure
+  side also shows how big the table and its indexes are (MySQL, MariaDB, PostgreSQL, SQL Server and SQLite with its dbstat
+  table), and the cell value of each key can be followed with the arrow described above.
+- **Find usages.** Right-click a table in the sidebar (or a column on the Structure side, or press Ctrl+K and search
+  *Find usages*) to list the foreign keys that point at it or leave it, and the views, routines and triggers whose stored
+  text mentions it (a whole-word name search, so it says "mentions"). Double-click a row to open the table, or to read the
+  routine in a query tab. Do this before dropping or renaming something.
 
 ## SQL editor
 | Action | Keys |
@@ -135,6 +151,12 @@ the values are sent as parameters, never pasted into the text. Leave a box empty
 true / false are sent as such, anything else as text (put quotes around a number to send it as text, or write
 `CAST(:d AS date)` for a date). Colons inside strings, comments and `::` casts are left alone. History keeps the query
 with its `:name` placeholders, so running it again asks again.
+
+**Snippets.** Type a trigger word and press **Tab** to expand a snippet, or pick it from the suggestions (marked
+*snip*). In its text, `${1:name}` is a place to type with a default (Tab moves to the next one; the same number repeats
+what you typed) and `$0` is where the caret finishes. A few starters ship with TableGrip (`sel`, `selc`, `ins`, `upd`,
+`del`, `join`, `grp`, `dup`); **Snippets...** in the workspace menu adds your own, and *Save the selection as a snippet*
+(Ctrl+K) turns the SQL you selected into one. Yours are kept in `snippets.json`.
 
 **History.** Every run is added to **History** in the sidebar; type in the search box to find one. Right-click >
 **Pin to top** keeps a query at the top of the list, and pinned queries survive *Clear history*. **Save query** keeps

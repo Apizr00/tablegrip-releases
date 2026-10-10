@@ -7,8 +7,8 @@
 <h3 align="center">A fast, minimalist database client for Windows</h3>
 
 <p align="center">
-  <a href="../../releases/latest"><img src="https://img.shields.io/badge/DOWNLOAD_%2F_RELEASES-ff9800?style=for-the-badge" alt="Download / Releases"></a>
-  <a href="../../issues"><img src="https://img.shields.io/badge/BUGS_%2F_FEATURES-7c5cff?style=for-the-badge" alt="Bugs / Features"></a>
+  <a href="https://github.com/Apizr00/tablegrip-releases/releases/latest"><img src="https://img.shields.io/badge/DOWNLOAD_%2F_RELEASES-ff9800?style=for-the-badge" alt="Download / Releases"></a>
+  <a href="https://github.com/Apizr00/tablegrip-releases/issues"><img src="https://img.shields.io/badge/BUGS_%2F_FEATURES-7c5cff?style=for-the-badge" alt="Bugs / Features"></a>
 </p>
 
 #### TableGrip is a native Windows application (WPF, .NET 10) for Windows 10 and 11, on x64 and ARM64
@@ -26,7 +26,7 @@ This repository carries the **downloads and release notes**. The source code is 
 
 ### Download
 
-Get the latest installer from the [Releases page](../../releases/latest):
+Get the latest installer from the [Releases page](https://github.com/Apizr00/tablegrip-releases/releases/latest):
 
 | You have | Download |
 |---|---|
@@ -65,7 +65,7 @@ Installed copies update themselves: **Help > Check for updates**. Nothing is con
 
 ### Feedback
 
-Found a bug or want a feature? Please [open an issue](../../issues).
+Found a bug or want a feature? Please [open an issue](https://github.com/Apizr00/tablegrip-releases/issues).
 
 No license has been chosen yet, so the code is not licensed for reuse.
 

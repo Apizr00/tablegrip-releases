@@ -18,7 +18,7 @@ written.
 
 Supports **SQLite**, **MySQL**, **MariaDB**, **PostgreSQL**, **SQL Server**
 
-> **Status:** version 0.9.7, a release candidate. All planned features are in; what is left before 1.0 is a signed
+> **Status:** version 0.9.8, a release candidate. All planned features are in; what is left before 1.0 is a signed
 > installer and a test on a clean machine. SQL Server support is implemented and unit-tested but has not been run
 > against a live server yet.
 
@@ -56,7 +56,7 @@ Installed copies update themselves: **Help > Check for updates**. Nothing is con
   identity", safe mode per connection (confirm changes or read-only), Windows Integrated Authentication for SQL Server.
 - **Quiet and accessible.** Light, dark or system theme, a command palette (Ctrl+K), keyboard reachable controls with
   visible focus, names for screen readers, per-monitor DPI.
-- **Private.** No account, no telemetry. Update checks and crash report files are opt-in and off by default.
+- **Private.** No account, no telemetry. The update check only contacts the release page (and can be turned off); crash report files are opt-in and off by default.
 
 ### Learn more
 

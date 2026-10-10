@@ -130,13 +130,17 @@ Every run is added to **History** in the sidebar. **Save query** keeps one under
 | Tab / Shift+Tab | Move between controls; every button is reachable |
 
 ## Updates and crash reports
-Both are **off by default** (Preferences).
-- **Help > Check for updates** (or *Check now* in Preferences) looks at the project's GitHub releases once, because you asked.
-  If a newer version exists you are asked before anything is downloaded; TableGrip then restarts to install it (a small
-  delta download, and your connections and settings are kept). It works for copies installed with the installer, not for
-  the portable zip.
-- *Look for a new version when TableGrip starts* does the same check on every start. It contacts only github.com, or the
-  update address you enter instead (an https:// address or a folder; a `github.com/owner/repo` address works too).
+Updates are checked when TableGrip starts (you can turn that off in Preferences); crash report files are **off by default**.
+- **When a new version exists** TableGrip opens a window like other desktop apps: *A new version of TableGrip is
+  available!* with the release notes. **Install Update** downloads it (with a progress bar) and then **Install and
+  Restart** installs it; your connections and settings are kept, and it asks first if you have unsaved changes.
+  **Remind Me Later** closes the window, and the start screen keeps an orange notice with **What's new** and **Update**.
+  **Skip This Version** hides that version until a newer one appears.
+- **Help > Check for updates** (or *Check now* in Preferences) looks once, whenever you like, and offers a skipped version
+  again. It works for copies installed with the installer, not for the portable zip.
+- *Look for a new version when TableGrip starts* (on by default) does the same check on every start, also available as a
+  checkbox in the update window. It contacts only github.com, or the update address you enter instead (an https://
+  address or a folder; a `github.com/owner/repo` address works too), and sends nothing about you or your data.
 - *Save a crash report file* writes a text file to `%APPDATA%\TableGrip\crashes` when something goes wrong. It contains
   the exception type, a scrubbed message and the stack trace, and no queries, connection settings or data. Nothing is sent
   anywhere; attach the file to a bug report if you want to share it.

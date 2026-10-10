@@ -3,6 +3,24 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [0.9.8] - 2026-10-10
+
+### Added
+- **A proper update experience.** TableGrip looks for a new version when it starts and, if there is one, opens
+  *A new version of TableGrip is available!* with the release notes. **Install Update** downloads it with a progress
+  bar, then **Install and Restart** installs it. **Remind Me Later** keeps an orange notice on the start screen
+  (with **What's new** and **Update**), and **Skip This Version** hides that version until a newer one appears.
+- Help > Check for updates and Preferences > Check now open the same window.
+
+### Changed
+- The start-up update check is **on by default** (turn it off in Preferences or in the update window). It contacts only
+  the release page and sends nothing about you or your data. If you had it off before, it is on again once.
+
+### Fixed
+- **All popups can be moved.** The connection editor, engine picker, backup / restore, password prompt and the command
+  palette (drawn inside the window) can be dragged by their empty areas, like the dialogs; they return to the centre
+  each time they open.
+
 ## [0.9.7] - 2026-10-10
 
 ### Fixed

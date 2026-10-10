@@ -3,6 +3,16 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [0.9.9] - 2026-10-10
+
+### Added
+- **Any colour for a connection.** Under *Colour* in the connection editor, next to the swatches, type red / green / blue
+  (0-255) or a `#RRGGBB` value; the preview dot and the boxes follow whatever you pick.
+
+### Fixed
+- **Button text is centred.** Text in the dialog buttons (OK, Cancel, Save, ...) sat at the left edge; it is centred now.
+  The start screen's icon buttons keep their left alignment.
+
 ## [0.9.8] - 2026-10-10
 
 ### Added

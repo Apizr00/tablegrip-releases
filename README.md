@@ -18,7 +18,7 @@ written.
 
 Supports **SQLite**, **MySQL**, **MariaDB**, **PostgreSQL**, **SQL Server**
 
-> **Status:** version 0.9.8, a release candidate. All planned features are in; what is left before 1.0 is a signed
+> **Status:** version 0.9.9, a release candidate. All planned features are in; what is left before 1.0 is a signed
 > installer and a test on a clean machine. SQL Server support is implemented and unit-tested but has not been run
 > against a live server yet.
 

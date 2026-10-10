@@ -29,6 +29,11 @@ refuses to connect and tells you why.
 
 Through an SSH tunnel the host name is `127.0.0.1`, so use *Verify CA* there.
 
+### Colour
+Each connection has a colour dot on the start screen and in the connection rail. Under *Colour* pick one of the swatches
+(the first one is the database type's default) or any colour of your own: type **R**, **G**, **B** (0-255) or a
+`#RRGGBB` value, and press Tab or click away to apply it.
+
 ### Safe mode
 Per connection: **Off**, **Confirm changes** (every statement that writes or changes the schema asks first; destructive
 ones are marked) and **Read-only** (writes are refused). Marking a connection *production* turns Off into Confirm.

@@ -67,7 +67,8 @@ Installed copies update themselves: **Help > Check for updates**. Nothing is con
 
 Found a bug or want a feature? Please [open an issue](https://github.com/Apizr00/tablegrip-releases/issues).
 
-No license has been chosen yet, so the code is not licensed for reuse.
+TableGrip is free to use under the [MIT License](LICENSE). The source code is not public. The open-source components it is
+built on are listed in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
 <br>
 

@@ -3,6 +3,13 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+- **TableGrip is licensed under the MIT License.** The source code stays private; the program is free to use. `LICENSE`
+  and `THIRD-PARTY-NOTICES.md` (the open-source components it is built on, with their licences) now ship in every build
+  and are published with the downloads.
+
 ## [0.9.9] - 2026-10-10
 
 ### Added

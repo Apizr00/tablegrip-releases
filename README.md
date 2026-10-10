@@ -18,27 +18,9 @@ written.
 
 Supports **SQLite**, **MySQL**, **MariaDB**, **PostgreSQL**, **SQL Server**
 
-> **Status:** version 0.9.9, a release candidate. All planned features are in; what is left before 1.0 is a signed
+> **Status:** version 0.9.10, a release candidate. All planned features are in; what is left before 1.0 is a signed
 > installer and a test on a clean machine. SQL Server support is implemented and unit-tested but has not been run
 > against a live server yet.
-
-This repository carries the **downloads and release notes**. The source code is private.
-
-### Download
-
-Get the latest installer from the [Releases page](https://github.com/Apizr00/tablegrip-releases/releases/latest):
-
-| You have | Download |
-|---|---|
-| Windows on a normal PC (Intel / AMD) | `TableGrip-win-x64-Setup.exe` |
-| Windows on ARM (Snapdragon, Surface Pro X ...) | `TableGrip-win-arm64-Setup.exe` |
-| No installer wanted | the `...-Portable.zip` of your architecture (it cannot update itself) |
-
-No .NET installation is needed. The builds are **not code-signed yet**, so Windows SmartScreen warns on first run
-(More info > Run anyway).
-
-Installed copies update themselves: **Help > Check for updates**. Nothing is contacted until you ask, or turn on
-*Look for a new version when TableGrip starts* in Preferences.
 
 ### As excited as we are?
 

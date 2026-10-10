@@ -3,12 +3,28 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [0.9.10] - 2026-10-10
+
+### Added
+- **A colour picker for connections.** Click the colour block next to *Status color* in the connection editor: a colour
+  wheel (hue and saturation) inside a ring that shows the colour in force, a hex box, copy and done buttons, and
+  saturation and brightness sliders. The star saves the colour to a list of your own (kept between sessions; click a saved
+  colour to use it, right-click to remove it).
+- **Your own environment tags.** The *Tag* drop-down keeps the usual list (None, local, development, testing, staging,
+  production) and now ends with **Custom...**: type a name of your own (up to 24 characters, e.g. *QA* or *client-x*). Tags
+  you create stay in the list for the next connection, and the **bin** button next to the drop-down deletes one (after
+  asking; connections that used it simply have no tag). Custom tags show in the start screen, the connection rail and
+  the title-bar pill like the built-in ones; only *production* turns confirmations on by itself.
 
 ### Changed
 - **TableGrip is licensed under the MIT License.** The source code stays private; the program is free to use. `LICENSE`
   and `THIRD-PARTY-NOTICES.md` (the open-source components it is built on, with their licences) now ship in every build
   and are published with the downloads.
+- **The new / edit connection window is redesigned.** Captions sit on the left with the fields to their right, in rounded
+  sheets: *Name*, *Status color* (the colour in force, the swatches and the environment *Tag* drop-down), the server fields
+  (*Host/IP*, *Port*, *User*, *Password* with its storage drop-down, *Database*, *SSL mode*, certificates), an **Over SSH**
+  button that lights up while the tunnel is on and opens its own sheet (server, user, password, **SSH key**), then *Group*
+  and *Safe mode*. **Save**, **Test** and **Connect** are at the bottom; the **x** or Esc closes it. Nothing was removed.
 
 ## [0.9.9] - 2026-10-10
 

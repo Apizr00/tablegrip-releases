@@ -29,10 +29,19 @@ refuses to connect and tells you why.
 
 Through an SSH tunnel the host name is `127.0.0.1`, so use *Verify CA* there.
 
+### Tag
+The *Tag* drop-down marks what a connection is for: **None**, **local**, **development**, **testing**, **staging** or
+**production**. Choose **Custom...** to type a name of your own (up to 24 characters); your tags stay in the list for
+the next connection. While one of your own tags is chosen, the bin button next to the drop-down deletes it from the list
+(after asking; connections that used it simply have no tag). The built-in tags cannot be deleted. The tag is shown next to the name on the start screen and in the title-bar pill. Only
+**production** switches safe mode to *Confirm changes* by itself.
+
 ### Colour
 Each connection has a colour dot on the start screen and in the connection rail. Under *Colour* pick one of the swatches
 (the first one is the database type's default) or any colour of your own: type **R**, **G**, **B** (0-255) or a
-`#RRGGBB` value, and press Tab or click away to apply it.
+`#RRGGBB` value, and press Tab or click away to apply it. Click the colour block next to *Status color* for the **colour
+picker**: a wheel for hue and saturation, a brightness and a saturation slider, the hex value with copy and done buttons,
+and a star that saves the colour to your own list (click a saved colour to use it, right-click to remove it).
 
 ### Safe mode
 Per connection: **Off**, **Confirm changes** (every statement that writes or changes the schema asks first; destructive

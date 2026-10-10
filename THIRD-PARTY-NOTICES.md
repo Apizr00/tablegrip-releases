@@ -46,5 +46,9 @@ The self-contained build also includes the **.NET runtime** and **Windows Presen
 (c) .NET Foundation and Contributors) and the native **SQLite** library (public domain), **SQL Server SNI** (Microsoft
 software licence terms of Microsoft.Data.SqlClient.SNI.runtime).
 
+The database logos in the connection picker come from **Simple Icons** (https://simpleicons.org, CC0-1.0, public
+domain dedication; `scripts/make-engine-icons.ps1`). The logos remain trademarks of their respective owners and are
+used only to identify which database a connection is for; TableGrip is not affiliated with or endorsed by them.
+
 Packages marked "see package" declare their licence by URL rather than by SPDX identifier; check them when
 regenerating this file.

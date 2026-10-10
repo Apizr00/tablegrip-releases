@@ -3,6 +3,21 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [0.9.11] - 2026-10-10
+
+### Changed
+- **Database logos instead of letters.** The database type picker, the start screen and the open-connection list now show
+  each engine's logo (white, on a disc in the engine's colour): MySQL, MariaDB, SQLite, PostgreSQL, SQL Server, DuckDB,
+  Cassandra, CockroachDB, Snowflake, Redshift, Redis, MongoDB, DynamoDB, Elasticsearch, ClickHouse, BigQuery, libSQL and
+  D1. Engines without a logo (Vertica, Greenplum) keep their two letters. The logos come from Simple Icons (CC0) and are
+  trademarks of their owners.
+
+### Fixed
+- **The colour picker's wheel and sliders did nothing when dragged.** The picker opened as a pop-up window that closed
+  itself as soon as the mouse was pressed inside it. It is now a sheet inside the editor (click the dimmed area, press Esc
+  or the tick to close), so the wheel and the sliders follow the mouse. Enter in its hex box applies the colour instead
+  of saving the connection.
+
 ## [0.9.10] - 2026-10-10
 
 ### Added

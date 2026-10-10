@@ -143,21 +143,20 @@ Every run is added to **History** in the sidebar. **Save query** keeps one under
 | Ctrl+C / Ctrl+Shift+C | Copy selected cells / copy with a header line |
 | Tab / Shift+Tab | Move between controls; every button is reachable |
 
-## Updates and crash reports
-Updates are checked when TableGrip starts (you can turn that off in Preferences); crash report files are **off by default**.
+## Updates
+Updates are checked when TableGrip starts (you can turn that off in Preferences).
 - **When a new version exists** TableGrip opens a window like other desktop apps: *A new version of TableGrip is
   available!* with the release notes. **Install Update** downloads it (with a progress bar) and then **Install and
   Restart** installs it; your connections and settings are kept, and it asks first if you have unsaved changes.
   **Remind Me Later** closes the window, and the start screen keeps an orange notice with **What's new** and **Update**.
   **Skip This Version** hides that version until a newer one appears.
+- **Several versions behind.** The notice and the window say how many updates you are behind (for example *Version 1.0.0
+  is available (8 updates behind)*), and the release notes list every version you skipped, newest first. The update
+  itself goes straight to the newest version.
 - **Help > Check for updates** (or *Check now* in Preferences) looks once, whenever you like, and offers a skipped version
   again. It works for copies installed with the installer, not for the portable zip.
 - *Look for a new version when TableGrip starts* (on by default) does the same check on every start, also available as a
-  checkbox in the update window. It contacts only github.com, or the update address you enter instead (an https://
-  address or a folder; a `github.com/owner/repo` address works too), and sends nothing about you or your data.
-- *Save a crash report file* writes a text file to `%APPDATA%\TableGrip\crashes` when something goes wrong. It contains
-  the exception type, a scrubbed message and the stack trace, and no queries, connection settings or data. Nothing is sent
-  anywhere; attach the file to a bug report if you want to share it.
+  checkbox in the update window. It contacts only github.com and sends nothing about you or your data.
 
 ## Appearance
 **Preferences > Appearance** has the **Look**, the colour scheme (System, Light, Dark) and two more choices:

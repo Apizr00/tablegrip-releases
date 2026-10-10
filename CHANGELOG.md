@@ -3,6 +3,19 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-10-11
+
+### Added
+- **How far behind you are.** When several versions were skipped, the update notice, the update window and the status
+  line say so (for example *Version 1.0.0 is available (8 updates behind)*), and *What's new* lists the notes of every
+  version you skipped, newest first. The update still goes straight to the newest version.
+
+### Removed
+- **The update address box** in Preferences: TableGrip always checks the official releases on GitHub. *Check now* and the
+  start-up check stay.
+- **The Diagnostics setting** (saving a crash report file) and the feature behind it. Unexpected errors are shown in a
+  dialog and written to the log as before.
+
 ## [1.0.0] - 2026-10-11
 
 First stable release. The look is new (frosted glass, floating panels; the original look stays available as *Classic*),

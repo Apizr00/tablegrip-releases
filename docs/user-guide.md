@@ -110,6 +110,16 @@ screen, and one more press closes the application. If any open connection has un
   Tables without a primary key are read-only.
 - **Copy** the selected cells with Ctrl+C (tab-separated, full values). Right-click > **Copy as** adds a header line
   (**Ctrl+Shift+C**), CSV, JSON, or SQL INSERT statements for the selected rows and columns.
+- **Follow relationships.** A foreign key cell that holds a value ends in an arrow (**→**): click it to open the table it
+  points at, showing just that row (a column that is in several keys asks which). Right-click a cell > **Follow
+  relationship** also lists *Rows that point at this row*: every table with a foreign key to this one, opened showing the
+  rows that reference the row you are on. The arrows need only the table's own keys; the second list reads the keys of
+  the whole database the first time (up to 500 tables) and keeps them for a few minutes.
+- **Right-click a cell** for: *Edit value*, *Set value* (NULL, empty string), *Reload rows*, *Paste* (the clipboard
+  text as one value into the cell; *Paste to selected cells* into every selected cell; staged like typing, so it can be
+  undone), *New row*, *Duplicate row*, *Copy* and *Copy as*, *Copy all values of this column*, *Quick filter* (equals,
+  does not equal, contains, is NULL, is not NULL, or clear), *Follow relationship*, *Import CSV*, *Export rows* and
+  *Delete row*. The menu acts on the cell under the pointer.
 - **Structure** shows columns, keys, indexes and the CREATE statement.
 
 ## SQL editor
@@ -120,7 +130,25 @@ screen, and one more press closes the application. If any open connection has un
 | Stop | Esc |
 | Suggest names | Ctrl+Space (also automatic after two letters or a dot) |
 
-Every run is added to **History** in the sidebar. **Save query** keeps one under **Queries**.
+**Parameters.** Write `:name` in a query (`WHERE customer_id = :id`) and TableGrip asks for the value each time it runs;
+the values are sent as parameters, never pasted into the text. Leave a box empty or type NULL for NULL; numbers and
+true / false are sent as such, anything else as text (put quotes around a number to send it as text, or write
+`CAST(:d AS date)` for a date). Colons inside strings, comments and `::` casts are left alone. History keeps the query
+with its `:name` placeholders, so running it again asks again.
+
+**History.** Every run is added to **History** in the sidebar; type in the search box to find one. Right-click >
+**Pin to top** keeps a query at the top of the list, and pinned queries survive *Clear history*. **Save query** keeps
+one under **Queries**.
+
+## Change log and connection health
+Both are in the workspace menu (the button beside the sidebar) and in the command palette (Ctrl+K).
+- **Change log** lists what was committed on this connection (tick *All connections* for every one): table edits you
+  committed, statements run from a query tab that change data or structure, and CSV imports, each with the time and the
+  SQL as it ran, values included. Search it, copy the SQL of an entry, or clear it. The file (`audit.json` in your data
+  folder) stays on this computer; passwords typed into a statement are masked.
+- **Connection health** times a few do-nothing statements and shows the typical round trip with a rating, plus the server
+  version, TLS and (MySQL, MariaDB, PostgreSQL, SQL Server) uptime. A slow round trip means the network, VPN or tunnel is
+  slow; if it is fast, a slow query is slow inside the server. It changes nothing.
 
 ## Export and import
 - **Export** (Ctrl+Shift+E): CSV, JSON, SQL INSERTs or Excel. A table can be exported whole (current sort and filter) or

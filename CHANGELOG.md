@@ -3,6 +3,26 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-10-11
+
+### Added
+- **Follow relationships.** Right-click a cell > *Follow relationship*: go to the row a foreign key points at, or list
+  the rows of other tables that point at the row you are on. The target opens filtered, so the filter bar shows what it
+  is looking at.
+- **An arrow in foreign key cells.** A key cell that holds a value ends in a small arrow; click it to open the row it
+  points at, no right-click needed.
+- **A fuller right-click menu on the grid:** *Set value*, *Reload rows*, *Paste* and *Paste to selected cells* (staged and
+  undoable), *Copy all values of this column*, *Quick filter* by the cell's value, *Import CSV* and *Export rows*. Right-click
+  now acts on the cell under the pointer.
+- **Query parameters.** Write `:name` in a query and TableGrip asks for the values when it runs; they are sent as real
+  parameters. History keeps the placeholders, so running a query again asks again.
+- **Pin history entries.** Right-click an entry in History > *Pin to top*. Pinned queries stay at the top and survive
+  *Clear history* and the size limit.
+- **Change log.** What was committed on a connection, when, and the SQL (edits, data-changing statements, CSV imports),
+  from the workspace menu or the command palette. Search it, copy an entry's SQL, or clear it. It stays on this computer.
+- **Connection health.** The typical round trip to the server with a rating, plus server version, TLS and uptime, so a
+  slow network can be told from a slow query.
+
 ## [1.0.2] - 2026-10-11
 
 ### Fixed

@@ -159,6 +159,18 @@ Updates are checked when TableGrip starts (you can turn that off in Preferences)
   the exception type, a scrubbed message and the stack trace, and no queries, connection settings or data. Nothing is sent
   anywhere; attach the file to a bug report if you want to share it.
 
+## Appearance
+**Preferences > Appearance** has the **Look**, the colour scheme (System, Light, Dark) and two more choices:
+- **Look**: *Glass* (frosted panels over a colourful backdrop) or *Classic* (the original flat look: opaque panels in
+  the original colours, no backdrop art). The colour scheme and the layout work with both.
+- **Glass effects**: *Auto* uses translucent panels while Windows' *Transparency effects* are on (and never in High
+  Contrast), *On* always, *Off* gives opaque panels with the same layout and colours. Panels show a blurred copy of
+  the colourful backdrop behind them.
+- **Layout**: *Floating* (separate rounded panels with gaps) or *Docked* (flush panels, no gaps). Both layouts work with either look.
+
+The title bar's connection name is a command bar: click it, or press **Ctrl+K**, to jump to a table, a tab or an action.
+A thin line in the environment's colour along the top of the workspace shows which environment you are in.
+
 ## Where TableGrip keeps its data
 `%APPDATA%\TableGrip`: `connections.json`, `settings.json`, `history.json`, `favorites.json`, `known_hosts.json`,
 `window.json` and `secrets.json` (encrypted). Delete the folder to start from scratch. Set the `TABLEGRIP_DATA_DIR`

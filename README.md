@@ -18,9 +18,9 @@ written.
 
 Supports **SQLite**, **MySQL**, **MariaDB**, **PostgreSQL**, **SQL Server**
 
-> **Status:** version 0.9.11, a release candidate. All planned features are in; what is left before 1.0 is a signed
-> installer and a test on a clean machine. SQL Server support is implemented and unit-tested but has not been run
-> against a live server yet.
+> **Status:** version 1.0.0. All planned features are in. The installers are not code-signed yet, so Windows
+> SmartScreen may warn the first time you run one. SQL Server support is
+> implemented and unit-tested but has not been run against a live server yet.
 
 ### As excited as we are?
 

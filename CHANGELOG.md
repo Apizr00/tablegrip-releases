@@ -3,6 +3,35 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.0.0] - 2026-10-11
+
+First stable release. The look is new (frosted glass, floating panels; the original look stays available as *Classic*),
+and everything else from the 0.9 series is unchanged. The installers are not code-signed yet.
+
+### Changed
+- **A glassmorphism look.** Frosted, translucent panels float over a soft, colourful abstract backdrop (blue, violet,
+  pink and teal shapes, a fine grain on top). Each panel shows a blurred copy of the backdrop behind it,
+  tinted white in the light theme and deep navy in the dark theme, with a bright hairline edge. Primary actions and links
+  use a blue accent. Text colours are checked against the glass over every backdrop colour.
+- **Floating layout.** The navigator, the workspace, the row details and the status bar are separate rounded cards with
+  gaps between them; tabs are pills; the connection name in the title bar is a command bar (click it, or Ctrl+K). A
+  2 px line in the environment's colour runs along the top of the workspace, so production is unmistakable.
+- **The start screen** is two glass cards (brand and actions, connections). Dialogs, the connection editor, the colour
+  picker and the command palette are glass sheets over the same backdrop.
+- **Choose your look.** Preferences > Appearance has a new **Look** choice: *Glass* (the new frosted look) or *Classic*
+  (the original flat look: opaque dark or light panels in the original colours, no backdrop art). The colour scheme
+  (System, Light, Dark) and the layout (floating or docked) work with both; Glass effects apply to the Glass look.
+- **Preferences > Appearance** gains *Glass effects* (Auto follows Windows' "Transparency effects" and High Contrast; On;
+  Off gives opaque panels with the same layout and colours) and *Layout* (Floating, or Docked with flush panels).
+- **Refresh no longer draws a blue line** across the top of the workspace: the command bar already fills as it
+  progresses. The line remains while a connection opens (the command bar is not shown yet) and inside a tab that is
+  running a query or loading a table.
+- `docs/roadmap.md`: the suggested features to add next, ranked.
+
+### Fixed
+- **Drop-down lists and menus were see-through** on the glass look, so their entries overlapped the text behind them
+  (the Preferences font list, for example). Drop-downs, menus and the SQL completion list are opaque now.
+
 ## [0.9.11] - 2026-10-10
 
 ### Changed

@@ -6,6 +6,16 @@
    Each connection opens exactly one database.
 2. **Test** checks the settings without saving. **Save** keeps it in the list; **Connect** saves and opens it.
 3. SQLite files can also be opened directly (Ctrl+O) or dropped onto the window.
+4. **Groups and order.** Right-click the list and choose New > Group... to make a group. Drag a connection onto a
+   group header to put it last in that group, or onto another connection (a line shows whether it goes above or below)
+   to place it there, in that connection's group or out of any group when that one has none. Dropped on the empty space it
+   goes last, out of any group. *Move to group* in a connection's menu does the same without the mouse. Drag a group's
+   header above or below another group to reorder the groups (dropped on another group's connections it goes below that
+   group; on the ungrouped connections, first; on Recent files or the empty space, last). *Remove group*
+   (right-click the group) keeps its connections and just ungroups them.
+5. **Group pictures.** Right-click a group and choose *Set picture...* to show an image beside its name. The image is
+   cropped to a square and scaled down; *Remove picture* clears it. Pictures are kept with the group on this computer
+   (in `connections.json`) and are not part of an exported connections file.
 
 ### Passwords
 - *Store securely* encrypts the password for your Windows account. It is never written to `connections.json`.

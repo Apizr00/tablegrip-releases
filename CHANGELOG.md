@@ -3,6 +3,20 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.4.0] - 2026-10-11
+
+### Added
+- **Reorder tabs by dragging.** Drag a tab along the tab strip to move it; it follows the pointer as it passes its
+  neighbours. Its editor text, undo history and scroll position stay as they were.
+- **Groups and order on the start screen.** Drag a connection onto a group to put it in, or between two connections
+  (a line shows where) to place it there, in that connection's group or out of any group when it is not in one.
+  Right-click and choose New > Group... to make a group, which stays listed while it is empty; right-click a group to
+  remove it (its connections are kept). A connection's menu also has Move to group, for doing the same without the mouse.
+  Groups move too: drag a group's header above or below another group.
+- **A picture for a group.** Right-click a group and choose Set picture... to pick an image (PNG, JPEG, BMP, GIF, WebP or
+  ICO). It is cropped to a square, scaled down and shown as a round picture beside the group's name, on the start screen
+  and in the Open connection list. Remove picture takes it away; removing the group removes its picture too.
+
 ## [1.3.0] - 2026-10-11
 
 ### Added

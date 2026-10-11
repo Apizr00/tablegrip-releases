@@ -18,7 +18,7 @@ written.
 
 Supports **SQLite**, **MySQL**, **MariaDB**, **PostgreSQL**, **SQL Server**
 
-> **Status:** version 1.4.0. All planned features are in. The installers are not code-signed yet, so Windows
+> **Status:** version 1.4.1. All planned features are in. The installers are not code-signed yet, so Windows
 > SmartScreen may warn the first time you run one, and on macOS you open the app once with right-click > Open. SQL Server support is
 > implemented and unit-tested but has not been run against a live server yet.
 

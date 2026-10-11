@@ -3,6 +3,14 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.4.1] - 2026-10-11
+
+### Fixed
+- **Saving a connection from the form.** Editing a connection that has an environment tag (local, production, ...) and
+  pressing Save did nothing on macOS: the tag drop-down wrote an empty value back and the save failed silently.
+- **Add row and Duplicate row** could close the app on macOS when the new row was not yet drawn.
+- The macOS menu bar names the app "TableGrip" instead of "Avalonia Application".
+
 ## [1.4.0] - 2026-10-11
 
 ### Added

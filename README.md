@@ -4,22 +4,22 @@
 
 <h1 align="center">TableGrip</h1>
 
-<h3 align="center">A fast, minimalist database client for Windows</h3>
+<h3 align="center">A fast, minimalist database client for Windows and macOS</h3>
 
 <p align="center">
   <a href="https://github.com/Apizr00/tablegrip-releases/releases/latest"><img src="https://img.shields.io/badge/DOWNLOAD_%2F_RELEASES-ff9800?style=for-the-badge" alt="Download / Releases"></a>
   <a href="https://github.com/Apizr00/tablegrip-releases/issues"><img src="https://img.shields.io/badge/BUGS_%2F_FEATURES-7c5cff?style=for-the-badge" alt="Bugs / Features"></a>
 </p>
 
-#### TableGrip is a native Windows application (WPF, .NET 10) for Windows 10 and 11, on x64 and ARM64
+#### TableGrip runs on Windows 10 and 11 (WPF, x64 and ARM64) and on macOS 12 or later (Avalonia, Apple silicon and Intel), built on .NET 10
 
 TableGrip lets you browse, query and edit a database in one small window, and shows every change as SQL before it is
 written.
 
 Supports **SQLite**, **MySQL**, **MariaDB**, **PostgreSQL**, **SQL Server**
 
-> **Status:** version 1.3.0. All planned features are in. The installers are not code-signed yet, so Windows
-> SmartScreen may warn the first time you run one. SQL Server support is
+> **Status:** version 1.4.0. All planned features are in. The installers are not code-signed yet, so Windows
+> SmartScreen may warn the first time you run one, and on macOS you open the app once with right-click > Open. SQL Server support is
 > implemented and unit-tested but has not been run against a live server yet.
 
 ### As excited as we are?

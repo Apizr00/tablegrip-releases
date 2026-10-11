@@ -3,6 +3,21 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.4.0] - 2026-10-11
+
+### Added
+- **TableGrip for macOS.** A new front end built with Avalonia runs on macOS (Apple silicon and Intel) and shares every
+  view model, provider and service with the Windows app. The same workspace: launcher, sidebar, table, query and
+  structure tabs, console and details panels, command palette, connection editor, and all dialogs (export, import,
+  query plan, ER diagram, compare data, snippets, change log, preferences).
+- **macOS Keychain.** Passwords and SSH secrets are kept in the Keychain on macOS; Windows keeps using DPAPI.
+- **macOS packaging.** `scripts/publish-mac.sh` builds `TableGrip.app` and a `.dmg` (ad-hoc signed, or signed and
+  notarized with a Developer ID). Data lives in `~/Library/Application Support/TableGrip`.
+- Opening a database file from Finder ("Open With") and a native macOS menu bar.
+
+### Fixed
+- Saved-connection file names with a path separator are handled on every platform.
+
 ## [1.3.0] - 2026-10-11
 
 ### Added

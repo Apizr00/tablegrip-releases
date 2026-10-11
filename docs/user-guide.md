@@ -162,6 +162,30 @@ what you typed) and `$0` is where the caret finishes. A few starters ship with T
 **Pin to top** keeps a query at the top of the list, and pinned queries survive *Clear history*. **Save query** keeps
 one under **Queries**.
 
+## Plans, diagrams and comparing data
+- **Explain (query plan).** In a query tab, **Explain** (Ctrl+L) shows how the engine would run the statement at the caret
+  or the selection, step by step: the operation, what it works on, estimated rows and cost, and each step's share of the
+  work. Steps that deserve a look are marked: a red edge for the likely hot spot (a full scan of a big table, a step with
+  half the cost, a sort or hash that spilled to disk) and an amber one for remarks (a whole index read, a temporary sort,
+  an estimate ten times off). Nothing is executed. On PostgreSQL, **Analyze** runs a *read* and reports real row counts and
+  times; it is not offered for a statement that changes data. MySQL and MariaDB show the tabular plan, SQLite its query
+  plan and SQL Server the estimated showplan (with the missing indexes it suggests). *Copy plan as text* puts the plan in the
+  clipboard.
+- **ER diagram.** **ER diagram...** in the workspace menu (or *Show in ER diagram...* on a table) draws the tables of the
+  database with their columns and the foreign keys between them, related tables side by side and tables without relations
+  below, in crow's-foot notation (a foot at the table that holds the key, bars at the table it points at, a circle where the
+  key may be NULL); primary key columns come first. The window is resizable, **Full screen** (F11) fills the screen, and **Fit**
+  zooms so the whole picture is visible. Choose a table and *within N relations* to see only its neighbourhood, show all columns, only key columns or just
+  names, zoom with Ctrl+wheel, click a table to highlight its relations, double-click to open it, and **Export PNG** or
+  **Export SVG**. It reads the keys of up to 500 tables.
+- **Compare data.** **Compare data...** in the workspace menu compares two tables by key, each from this connection or
+  another saved one (so staging against production, or a table against its backup). The key columns default to the
+  primary key. It lists the rows that exist only in the source, only in the target, and the rows whose values differ
+  (column by column), then writes the script that would make the target match the source: INSERTs, UPDATEs of the changed
+  columns and, if you tick it, DELETEs. Values are compared by meaning (1 equals 1.0, true equals 1). **Nothing is changed**:
+  review the script, copy or save it, or open it in a query tab and run it there, where safe mode, the production lock and
+  the change log apply. The target is read into memory, so it is limited to 500,000 rows.
+
 ## Change log and connection health
 Both are in the workspace menu (the button beside the sidebar) and in the command palette (Ctrl+K).
 - **Change log** lists what was committed on this connection (tick *All connections* for every one): table edits you

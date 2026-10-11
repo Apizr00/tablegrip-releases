@@ -3,6 +3,20 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.3.0] - 2026-10-11
+
+### Added
+- **Query plans (Explain).** Ctrl+L in a query tab shows how the engine would run a statement, step by step, with each
+  step's rows, cost and share of the work, and the likely hot spots marked: a full scan of a big table, a step that is
+  most of the cost, a sort or hash that spilled to disk, an estimate that is far off. PostgreSQL can Analyze a read for real
+  row counts and times; MySQL, MariaDB, SQLite and SQL Server show their estimated plans.
+- **ER diagram.** The tables of a database as boxes with their columns and the foreign keys as lines, laid out
+  automatically; focus on one table and the tables around it, choose how many columns show, click to highlight relations,
+  export a PNG or an SVG. Crow's-foot notation, key columns first, a layout that reads left to right instead of
+  running down the page, and a resizable window with Full screen (F11) and Fit.
+- **Compare data.** Compare two tables (of one database or two, even of different engines) by key and get the rows only on
+  one side, the changed rows, and a script that makes the target match the source. The script is for review; nothing is run.
+
 ## [1.2.0] - 2026-10-11
 
 ### Added
@@ -19,7 +33,6 @@ follow [Semantic Versioning](https://semver.org/).
   `IS NULL` / `IS NOT NULL`, `BETWEEN` / `NOT BETWEEN`, `LIKE`, then Contains, Not contains, Has prefix and Has suffix,
   with a divider between the groups. `IN` takes a list (commas or lines, quotes for a value with a comma), `BETWEEN` gets a
   second box, and `LIKE` is your own pattern.
-
 ## [1.1.0] - 2026-10-11
 
 ### Added

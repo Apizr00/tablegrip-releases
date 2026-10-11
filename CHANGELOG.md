@@ -3,6 +3,14 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.5.0] - 2026-10-11
+
+### Added
+- **In-app updates on macOS.** The Mac app now updates itself like the Windows one: Check for updates (and the check at
+  start-up) finds a new version, downloads it, and restarts into it. It ships as a `.pkg` installer and a `.dmg`, for
+  Apple silicon and Intel. Copies from earlier 1.4.x `.dmg` files cannot update themselves: install 1.5.0 once, and
+  later versions update in the app.
+
 ## [1.4.1] - 2026-10-11
 
 ### Fixed

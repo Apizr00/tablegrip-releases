@@ -18,7 +18,7 @@ written.
 
 Supports **SQLite**, **MySQL**, **MariaDB**, **PostgreSQL**, **SQL Server**
 
-> **Status:** version 1.4.1. All planned features are in. The installers are not code-signed yet, so Windows
+> **Status:** version 1.5.0. All planned features are in. The installers are not code-signed yet, so Windows
 > SmartScreen may warn the first time you run one, and on macOS you open the app once with right-click > Open. SQL Server support is
 > implemented and unit-tested but has not been run against a live server yet.
 
@@ -38,7 +38,7 @@ Supports **SQLite**, **MySQL**, **MariaDB**, **PostgreSQL**, **SQL Server**
   identity", safe mode per connection (confirm changes or read-only), Windows Integrated Authentication for SQL Server.
 - **Quiet and accessible.** Light, dark or system theme, a command palette (Ctrl+K), keyboard reachable controls with
   visible focus, names for screen readers, per-monitor DPI.
-- **Private.** No account, no telemetry. The update check only contacts the release page (and can be turned off).
+- **Private.** No account, no telemetry. The update check only contacts the release page (and can be turned off). New versions are installed from inside the app on Windows and macOS.
 
 ### Learn more
 

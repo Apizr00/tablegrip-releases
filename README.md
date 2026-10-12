@@ -7,8 +7,8 @@
 <h3 align="center">A fast, minimalist database client for Windows</h3>
 
 <p align="center">
-  <a href="https://github.com/Apizr00/tablegrip-releases/releases/latest"><img src="https://img.shields.io/badge/DOWNLOAD_%2F_RELEASES-ff9800?style=for-the-badge" alt="Download / Releases"></a>
-  <a href="https://github.com/Apizr00/tablegrip-releases/issues"><img src="https://img.shields.io/badge/BUGS_%2F_FEATURES-7c5cff?style=for-the-badge" alt="Bugs / Features"></a>
+  <a href="https://github.com/Apizr00/tablegrip-windows-releases/releases/latest"><img src="https://img.shields.io/badge/DOWNLOAD_%2F_RELEASES-ff9800?style=for-the-badge" alt="Download / Releases"></a>
+  <a href="https://github.com/Apizr00/tablegrip-windows-releases/issues"><img src="https://img.shields.io/badge/BUGS_%2F_FEATURES-7c5cff?style=for-the-badge" alt="Bugs / Features"></a>
 </p>
 
 #### TableGrip is a native Windows application (WPF, .NET 10) for Windows 10 and 11, on x64 and ARM64
@@ -47,7 +47,7 @@ Supports **SQLite**, **MySQL**, **MariaDB**, **PostgreSQL**, **SQL Server**
 
 ### Feedback
 
-Found a bug or want a feature? Please [open an issue](https://github.com/Apizr00/tablegrip-releases/issues).
+Found a bug or want a feature? Please [open an issue](https://github.com/Apizr00/tablegrip-windows-releases/issues).
 
 TableGrip is free to use under the [MIT License](LICENSE). The source code is not public. The open-source components it is
 built on are listed in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).

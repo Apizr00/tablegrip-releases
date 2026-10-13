@@ -3,6 +3,24 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.9.1] - 2026-10-14
+
+### Fixed
+- **A script's statements now share one connection.** Each statement used to run on a connection of its own, so in a query tab
+  (Run all, or a selection with several statements) and in `tablegrip-cli query`, `BEGIN ... COMMIT / ROLLBACK`, temporary
+  tables and `SET` / `PRAGMA` settings made by one statement were gone for the next ("no such table", "cannot rollback - no
+  transaction is active"). All four engines now hold one connection for the whole run; a transaction left open at the end is
+  rolled back. A single statement is unchanged.
+- `tablegrip-cli query` in table format no longer breaks a row apart when a value contains a line break.
+
+### Improved
+- Reading the structure of a table in a SQLite database takes about a third of the time in a database with many tables (one
+  connection instead of several, each of which had to read the whole schema again). Backing up a database with 1,500 tables
+  went from 20 s to 6.6 s for the structure.
+- Importing a CSV into SQLite is about 40% faster (the same prepared statement is reused for each batch of rows): 1 million
+  rows in 9.6 s instead of 16 s.
+- Rebuilding the sidebar list (typing in the filter) tells the list once instead of once per table.
+
 ## [1.9.0] - 2026-10-14
 
 ### Added

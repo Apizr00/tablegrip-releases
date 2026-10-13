@@ -3,6 +3,37 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.6.0] - 2026-10-13
+
+### Added
+- **Import JSON.** The import window now reads a JSON file too: an array of objects (`[{"id": 1, ...}, ...]`) or one object
+  per line (JSON Lines / NDJSON). The columns are the property names; a missing or `null` property becomes NULL, a nested
+  object or array is kept as JSON text, and numbers keep the digits they were written with.
+- **What to do with existing rows.** Importing CSV or JSON can now *Stop and change nothing* (the default), *Skip the
+  existing row* or *Update the existing row* when the primary key is already in the table. PostgreSQL and SQLite use
+  `ON CONFLICT`, MySQL and MariaDB `INSERT IGNORE` / `ON DUPLICATE KEY UPDATE`, SQL Server a `NOT EXISTS` / `MERGE` per row.
+  Update changes only the columns that are in the file.
+- **Text encoding for CSV.** UTF-8 (default, byte order marks honoured), UTF-16, Windows-1252, Windows-1250, Windows-1251 and
+  ISO-8859-1.
+- **Type hints.** Beside each column mapping the import window says what the file column looks like ("looks like whole
+  numbers", "dates", ...).
+- **Choose the columns to export.** The export window lists the columns with check boxes (All / None); only the chosen ones
+  are written, in every format.
+- **Compressed backups.** *Compress the file (gzip, .sql.gz)* in the backup panel; restore reads `.sql` and `.sql.gz`.
+  *Import SQL dump (restore)...* is now in the File menu.
+- **Run in background.** Exports, imports, backups and restores have a *Run in background* button: the window closes, a chip
+  in the footer shows the progress (with Stop), and when the job ends the window flashes in the taskbar if you are in
+  another program. The chip stays, with *Show in folder*, until you dismiss it.
+- **Several sort columns.** Shift+click a column header to add it to the sort, again to reverse it, a third time to remove it;
+  the headers show the order (name 1, created 2). A plain click still sorts by that column alone.
+- **Hide and show columns.** Right-click a column header: *Hide "x"*, *Show all columns* or tick columns under *Columns*.
+- **Paste rows and columns.** Ctrl+Alt+V (or right-click > *Paste as rows and columns*) pastes a block copied from a
+  spreadsheet or another grid: the first cell goes into the active cell, the rest to the right and below, and rows past the
+  end become new rows. Everything is staged, so it can be reviewed and undone.
+- **Binary viewer.** Double-click a binary cell (or right-click > *View binary value...*, or Ctrl+E): the file type it seems to
+  be, a picture for PNG, JPEG, GIF, BMP and WebP, the text when it is plain text, and a hex dump. *Save to file...* writes
+  the bytes out; *Copy as 0x...* copies them as SQL hex.
+
 ## [1.5.0] - 2026-10-13
 
 ### Added

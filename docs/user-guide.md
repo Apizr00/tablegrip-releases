@@ -233,9 +233,29 @@ Both are in the workspace menu (the button beside the sidebar) and in the comman
 
 ## Export and import
 - **Export** (Ctrl+Shift+E): CSV, JSON, SQL INSERTs or Excel. A table can be exported whole (current sort and filter) or
-  just the loaded rows.
-- **Import CSV** (Ctrl+Shift+I): the delimiter is detected, columns are matched by name and can be remapped, and the file
-  is validated *before* anything is written. An error leaves the table untouched.
+  just the loaded rows, and you can untick columns you do not want in the file.
+- **Import CSV or JSON** (Ctrl+Shift+I): the format is detected from the file. For CSV the delimiter is detected and you can
+  choose the text encoding; for JSON the file is an array of objects or one object per line, and the property names are the
+  columns. Columns are matched by name and can be remapped; beside each one the window says what the values look like. The
+  file is validated *before* anything is written, and an error leaves the table untouched.
+- **If the key exists.** Choose what happens to a row whose primary key is already in the table: *Stop and change nothing*
+  (default), *Skip the existing row*, or *Update the existing row* (only the columns in the file change). Skip and update
+  need the table's primary key columns to be mapped; update needs a primary key.
+- **Import SQL dump.** *File > Import SQL dump (restore)...* runs a `.sql` or `.sql.gz` script on the connection as one
+  transaction. Backups can be written compressed: tick *Compress the file* in the backup panel.
+- **Run in background.** While an export, import, backup or restore runs, *Run in background* closes its window. A chip in
+  the footer shows the progress and has Stop; when the job ends the window flashes in the taskbar if another program is in
+  front, and the chip stays (with *Show in folder* for files) until you dismiss it with the x.
+
+## Columns, sorting and pasting
+- **Sort** by several columns: click a header for that column alone (ascending, descending, off); **Shift+click** adds a
+  column to the sort or reverses / removes it. The headers show the order.
+- **Hide columns.** Right-click a header: *Hide "name"*, *Show all columns*, or *Columns* to tick which are shown. The
+  choice lasts as long as the tab is open.
+- **Paste rows and columns.** **Ctrl+Alt+V** pastes tab-separated rows (from Excel or another grid) starting at the active
+  cell; rows past the last one are added as new rows. Plain **Ctrl+V** still pastes the clipboard as one value.
+- **Binary values.** Double-click a binary cell, or press Ctrl+E, to see its type, a picture (PNG, JPEG, GIF, BMP, WebP), its
+  text when it is text, and a hex dump; save it to a file or copy it as `0x...` hex.
 
 ## Keyboard
 | Keys | Action |
@@ -251,6 +271,7 @@ Both are in the workspace menu (the button beside the sidebar) and in the comman
 | Ctrl+, | Preferences |
 | Ctrl+Z / Ctrl+Y | Undo / redo staged edits |
 | Ctrl+C / Ctrl+Shift+C | Copy selected cells / copy with a header line |
+| Ctrl+V / Ctrl+Alt+V | Paste as one value / paste rows and columns |
 | Tab / Shift+Tab | Move between controls; every button is reachable |
 
 ## Updates

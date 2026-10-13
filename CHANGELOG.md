@@ -3,6 +3,19 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.9.2] - 2026-10-14
+
+### Improved
+- **Smoother interface.** Buttons, list rows, tabs, segmented switches and the window buttons now fade their hover, press and
+  selected states in and out (about a tenth of a second in, a little longer out) instead of changing in one frame. Text boxes
+  fade their focus ring in. Combo box and sub-menu lists fade open.
+- **Dialogs and tabs arrive instead of popping up.** A dialog fades in while rising a few pixels into place, and a tab fades
+  in each time it is opened or switched to. All of this is skipped when Windows has animation effects turned off.
+- **Lists scroll by pixel.** The sidebar and the other lists glide with the mouse wheel instead of jumping a whole row at a time.
+- **Sharper, consistent look.** The SQL editor's find panel (Ctrl+F) and tooltips use the app's colours and rounded shape instead
+  of the grey system boxes. The find panel has match case, whole word and regular expression switches and previous / next / close
+  buttons.
+
 ## [1.9.1] - 2026-10-14
 
 ### Fixed

@@ -3,6 +3,12 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.4.1] - 2026-10-13
+
+### Changed
+- **Ctrl+F in a table opens the filter.** It now shows the filter conditions under the search box, and the cursor
+  goes to the search box. The Filter button still opens and closes the panel.
+
 ## [1.4.0] - 2026-10-11
 
 ### Added

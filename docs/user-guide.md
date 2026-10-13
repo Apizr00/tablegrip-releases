@@ -24,6 +24,11 @@
 7. **Timeout and retries.** *Timeout (s)* is how long to wait for the server (default 15). *Retries* is how many more
    times to try when the server cannot be reached (a timeout, a refused or dropped connection); a wrong password or an
    unknown database is never retried. Each retry is written to the console log.
+8. **Diagnose.** When a connection does not work, *Diagnose* in the editor walks the path to the database one step at a time:
+   the settings, the database file, the SSH server (name and port), the SSH sign-in and tunnel, the database server (name and
+   port), the database login and a first query. Each step shows its time; the first one that fails stops the check, says what
+   it most likely means and what to try, and the steps after it are marked as skipped. *Copy report* puts the result on the
+   clipboard for a bug report. Recently opened tables come first in the command palette (Ctrl+K, Ctrl+P).
 
 
 ### Passwords
@@ -303,7 +308,91 @@ Both are in the workspace menu (the button beside the sidebar) and in the comman
 - **Binary values.** Double-click a binary cell, or press Ctrl+E, to see its type, a picture (PNG, JPEG, GIF, BMP, WebP), its
   text when it is text, and a hex dump; save it to a file or copy it as `0x...` hex.
 
+## Comparing schemas and migrations
+
+**Compare schema** (Database > *Compare schema...*) shows how two databases differ in structure. Pick the *Source* (the
+one that is right) and the *Target* (the one to bring in line); either can be another saved connection. *Compare* lists the
+tables that are new, changed, or only in the target, and selecting one shows what differs: columns, types, defaults, keys,
+indexes and foreign keys. Untick a difference to leave it out of the script. *Include drops* adds what exists only in the
+target (tables, columns, indexes), which is off by default so nothing is dropped by accident.
+
+The script at the bottom makes the target match the source. Nothing is run: copy it, save it, open it in a query tab, or
+choose *Keep as a migration*. Two different engines are compared and listed, but no script is written, because types do not
+translate.
+
+**Migrations** (Database > *Migrations...*) is a small, honest workflow. A migration is an SQL file named
+`0001_add_orders.sql` in a folder (*Change folder...* picks it; by default a folder named after the connection in Documents).
+*New migration...* writes the next numbered file, or keep a Compare schema script as one. *Apply all pending* runs the
+pending files in order, each in one transaction, and records it in a `tablegrip_migrations` table of the database so it runs
+once. The list says whether each file is:
+
+- **pending**: not run on this database yet,
+- **applied**: run, with the date,
+- **edited**: run, but the file changed afterwards, so the database is not what the file says (nothing is re-run),
+- **missing**: recorded in the database but the file is gone.
+
+Safe mode and the production lock apply: a read-only connection refuses, and a production connection asks for its name first.
+MySQL and MariaDB commit structure changes on their own, so a failed migration there can leave part of it applied.
+
+## Dashboard
+
+Database > *Dashboard...* shows how the database is doing while the window is open. **Response time** and **Sessions** are
+sparklines of the last 60 readings (one every 3 seconds) with the latest value, the median and the highest. Under them are
+the status facts the server reports (version, size, uptime, cache hit ratio, ...). *Pause updates* freezes it; *Refresh now*
+reads once. SQLite has no other sessions to count, and the facts depend on what the account may see.
+
+## Command line
+
+`tablegrip-cli.cmd` (next to `TableGrip.exe`) runs TableGrip without a window, for scripts and scheduled jobs. It uses your
+saved connections and the passwords stored for them. A connection is its name or its id.
+
+```
+tablegrip-cli list
+tablegrip-cli tables  -c Shop
+tablegrip-cli query   -c Shop --sql "select id, name from customers" -f csv -o customers.csv
+tablegrip-cli export  -c Shop --table orders -f json -o orders.json
+tablegrip-cli backup  -c Shop -o shop.sql
+```
+
+- `query` prints an aligned table by default; `-f` picks `csv`, `json`, `sql` or `xlsx` (a file with `-o`). With several
+  statements, the result of the last one is written.
+- Queries are **read-only** unless `--write` is given. On a connection tagged Production, `--write` also needs
+  `--yes-production`.
+- A connection that asks for its password each time reads it from the `TABLEGRIP_PASSWORD` environment variable (an SSH secret
+  from `TABLEGRIP_SSH_SECRET`). An SSH host key that is not trusted yet is refused: connect once in the app first.
+- The exit code is 0 when it worked, 1 when it failed (the reason is on the error output) and 2 when the command line was
+  not understood. `tablegrip-cli help` lists everything.
+- Use `tablegrip-cli.cmd` rather than `TableGrip.exe cli`: the program has no console of its own, and the script makes the
+  shell wait for it and keep its exit code.
+
+## Extensions
+
+Extensions add commands to the command palette. They are off until you tick **Preferences > Extensions**, because an
+extension is a .NET library that runs inside TableGrip with your rights: use only code you trust.
+
+An extension is a class that implements `ITableGripExtension` (from `TableGrip.Core.dll`), in a `.dll` in
+`%APPDATA%\TableGrip\extensions`. Each command appears as **Extension: name - command** after a restart. A command receives a
+context that can run one read-only statement on the open connection (statements that change anything are refused), open SQL in
+a query tab for you to review, and show a message. The command palette entry **Extensions...** lists what was loaded and why a
+file was not. A working sample, with build notes, is in `docs/samples/HelloExtension`.
+
+## Shared connections
+
+A team can share how to reach its databases without sharing secrets. **File > Publish shared connections...** writes the saved
+connections to a file you choose (a network folder or a repository both work) and remembers it. **File > Sync shared
+connections...** reads that file: a new name is added, a known name takes the shared host, port, database, user, SSL, SSH, tag
+and group, and keeps your own id, your password choice and when you last opened it. Connections that are only on your computer
+are left alone.
+
+The file has **no password and no SSH secret**; a connection that had a stored password asks each person for their own the
+first time. Database file (SQLite) connections are not published, since a path on one computer means nothing on another.
+
 ## Keyboard
+
+These are the defaults. **Tools > Keyboard shortcuts...** (or the palette) changes the ones that work anywhere in the window:
+select an action, click the box and press the new keys. A shortcut that another action already uses is refused. The keys of
+the SQL editor and the grid (Ctrl+Enter, Ctrl+Z, copy and paste, ...) are fixed.
+
 | Keys | Action |
 |---|---|
 | Ctrl+K | Command palette |

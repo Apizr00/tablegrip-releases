@@ -3,6 +3,54 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.9.0] - 2026-10-14
+
+### Added
+- **Compare schema** (Database > *Compare schema...*). Pick a source and a target (either can be another saved connection) and
+  see which tables are new, changed or only in the target, and what differs (columns, types, defaults, keys, indexes, foreign
+  keys). Untick a difference to leave it out. The script that makes the target match the source is shown for review: copy it,
+  save it, open it in a query tab or keep it as a migration. *Include drops* also lists what exists only in the target. Nothing
+  is run. Two different engines are listed but no script is written, because types do not translate.
+- **Migrations** (Database > *Migrations...*). A folder of numbered SQL files (`0001_add_orders.sql`) applied in order, each in
+  one transaction, and recorded in a `tablegrip_migrations` table so each runs once. The list shows what is pending, applied,
+  edited since it was applied (the file's checksum no longer matches) or missing. *Apply all pending*, *Apply selected*, *New
+  migration...*, *Open* and *Show in folder*. Safe mode and the production lock apply as everywhere else.
+- **Dashboard** (Database > *Dashboard...*). Response time and session count as live sparklines (the last 60 readings, every 3
+  seconds, with median and highest), next to the server's status facts (version, size, uptime, ...). *Pause updates* and
+  *Refresh now*.
+- **Customizable keyboard shortcuts** (Tools or Edit > *Keyboard shortcuts...*). Select an action, click the box and press the
+  new keys; it takes effect at once and the menus and the command palette show it. A shortcut another action already uses is
+  refused with that action's name. *Remove*, *Reset* and *Reset all*. Dashboard, Administration, Compare schema, Migrations
+  and the shortcuts window can be given keys too. The keys of the SQL editor itself are fixed.
+- **Diagnose** button in the connection editor: a step-by-step check of the path to the database (settings, the database file,
+  the SSH server's name and port, the SSH sign-in and tunnel, the server's name and port, the database login, a first
+  query), each with its time, and for a failure what it most likely means and what to try.
+- **Recent objects.** Tables you opened come first in the command palette (and Ctrl+P) when the search box is empty.
+- **Command line.** `tablegrip-cli list | tables | query | export | backup` (the script `tablegrip-cli.cmd` next to
+  TableGrip.exe) uses the saved connections and their stored passwords. `query` prints a table, CSV, JSON, SQL or an Excel
+  file; `--out` writes to a file. Queries are read-only unless `--write` is given, and a connection tagged Production also needs
+  `--yes-production`. A connection that asks for its password each time reads `TABLEGRIP_PASSWORD`. Exit code 0 is done, 1
+  failed, 2 the command line was not understood.
+- **Extensions.** Off until *Preferences > Extensions* is ticked. A .NET library in `%APPDATA%\TableGrip\extensions` that
+  implements `ITableGripExtension` adds commands to the command palette ("Extension: name - command"); a command can run a
+  read-only query on the open connection, open SQL in a query tab for review, or show a message. A sample is in
+  `docs/samples/HelloExtension`. Extensions run with your rights, so only use ones you trust.
+- **Shared connection profiles** (File > *Publish shared connections...* and *Sync shared connections...*). Writes the saved
+  connections to a file a team can read (a network folder, a repository) and brings such a file in line: new names are added,
+  known names take the shared host, port, tag and so on, and keep their own password choice. The file holds no password and no
+  SSH secret; people are asked for their own the first time. Database file connections are left out because a path means
+  nothing on another computer.
+
+### Changed
+- The window's keyboard shortcuts are read from your settings instead of being fixed in the window.
+
+### Notes
+- Custom database drivers are not planned: the extension API adds commands, not database engines.
+- The command line is the windowless TableGrip.exe attached to a console. Use `tablegrip-cli.cmd` (or `start /wait`) so the
+  shell waits for it and gets the exit code.
+- Schema compare and migrations for PostgreSQL, MySQL, MariaDB and SQL Server are checked as text; the SQLite paths run against
+  real files. They have not been run against live servers yet.
+
 ## [1.8.0] - 2026-10-13
 
 ### Added

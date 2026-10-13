@@ -3,6 +3,33 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.8.0] - 2026-10-13
+
+### Added
+- **Administration window** (Database > *Administration...*, or Ctrl+K). Pages for **Sessions** (who is connected, what each
+  runs and for how long, with the full query below; *Cancel query* stops it, *End session* closes the connection; idle
+  sessions can be shown), **Locks** (which session waits for which, and the blocking one), **Server status** (version, uptime,
+  connections, size, cache hit ratio and other health numbers), **Users and roles** and **Replication**. Each page refreshes on
+  demand or every 5 seconds. They need the account to be allowed to look; if it is not, the page says so.
+- **Users, roles and grants.** The users page lists the accounts and what the selected one may do (privileges per table and
+  role memberships). *New user...*, *Grant...*, *Revoke...*, *Password...* and *Drop...* write the statement and show it in
+  the Review SQL window first; a password you type is in that text (the change log masks it).
+- **Maintenance.** Right-click a table > *Maintenance*, or Database > *Maintenance*: update statistics, optimize / vacuum,
+  rebuild indexes, check for corruption, each with the engine's own command (ANALYZE, VACUUM, OPTIMIZE TABLE, REINDEX, UPDATE
+  STATISTICS, DBCC CHECKTABLE, PRAGMA integrity_check). Commands that cannot run in a transaction (VACUUM) run on their own, and
+  what a command printed (the rows of CHECK TABLE) is shown after it ran.
+- **Backup manager.** Database > *Manage backups...* lists the backups in a folder (by default *TableGrip backups* in
+  Documents; *Change folder...* remembers another) with date, size, what they hold and the engine they came from. *Restore...*
+  opens the restore panel on the selected one, *Check* reads the whole file (unpacking `.gz`) to make sure it is complete,
+  *Delete* removes it, and *Keep newest...* deletes all but the newest few after showing the list. *Back up now...* opens the
+  backup panel.
+
+### Notes
+- The queries for PostgreSQL, MySQL, MariaDB and SQL Server (sessions, locks, status, users, replication) are checked as
+  text; the SQLite pages run against real files. They have not been run against live servers yet. PostgreSQL and SQL Server
+  need the account to be allowed to see other sessions and the server's dynamic views; MySQL 8 needs the sys schema for
+  locks (MariaDB uses information_schema).
+
 ## [1.7.0] - 2026-10-13
 
 ### Added

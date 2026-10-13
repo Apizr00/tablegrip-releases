@@ -217,6 +217,32 @@ Right-click a table in the sidebar for **Design table...**, **Rename...**, **Dro
 - **Generate SQL.** SELECT, INSERT, UPDATE and DELETE templates with the columns written out (a `?` marks each value to fill in),
   plus the table's CREATE and DROP statements, open in a query tab.
 
+## Administration
+**Database > Administration...** (or Ctrl+K and type *Administration*) opens a window with five pages. Each has *Refresh*, and
+*Refresh every 5 seconds*. They only read until you press an action button, and every action goes through the Review SQL window.
+- **Sessions.** One row per other connection: id, user, database, host, state, seconds and query. Select one to read its whole
+  query. *Cancel query* stops the running query and keeps the connection (PostgreSQL, MySQL, MariaDB); *End session* closes the
+  connection (SQL Server can only do this). *Show idle sessions* adds the ones doing nothing.
+- **Locks.** Sessions that wait for another one, with the blocking session beside them. End the blocking one (carefully) from
+  Sessions.
+- **Server status.** Version, uptime, connections, database size and the engine's own health numbers.
+- **Users and roles.** The accounts, and for the selected one its privileges and roles. *New user...*, *Grant...* (read, add,
+  change, delete or everything, on one table or on everything in the schema), *Revoke...*, *Password...* and *Drop...*.
+- **Replication.** The replicas of this server, or the primary it follows; a note when none is set up.
+
+A page that the engine cannot show (SQLite has no sessions, users or replication) says so. If the account is not allowed to
+look, the page shows the server's message.
+
+## Maintenance and backups
+- **Maintenance.** Right-click a table > *Maintenance* (or Database > *Maintenance* for all tables): *Update statistics*,
+  *Optimize / vacuum*, *Rebuild indexes*, *Check for corruption*. The review shows the exact command (ANALYZE, VACUUM,
+  OPTIMIZE TABLE, REINDEX, UPDATE STATISTICS, DBCC, PRAGMA integrity_check) and warnings about locks and time. What the command
+  printed is shown under it afterwards. VACUUM cannot run inside a transaction, so it runs alone; a SQLite VACUUM needs free
+  disk space about the size of the file.
+- **Backup manager.** Database > *Manage backups...* shows the `.sql` and `.sql.gz` files in the backup folder (change it with
+  *Change folder...*). *Restore...* (or double-click) opens the restore panel on the file, *Check* reads the whole file to be
+  sure it is complete, *Show in folder*, *Delete*, and *Keep newest...* removes all but the newest few after listing them.
+
 ## Plans, diagrams and comparing data
 - **Explain (query plan).** In a query tab, **Explain** (Ctrl+L) shows how the engine would run the statement at the caret
   or the selection, step by step: the operation, what it works on, estimated rows and cost, and each step's share of the

@@ -197,6 +197,26 @@ what you typed) and `$0` is where the caret finishes. A few starters ship with T
 **Pin to top** keeps a query at the top of the list, and pinned queries survive *Clear history*. **Save query** keeps
 one under **Queries**.
 
+## Changing the structure
+Right-click a table in the sidebar for **Design table...**, **Rename...**, **Drop table...** and **Generate SQL**; the
+**Database** menu (⋮ beside the sidebar button) has **New table...**, **New view...**, **New schema...**, **New database...**,
+**Drop schema...** and **Drop database...**.
+- **The designer.** *Columns*: name, type (click a suggested type to put it in the selected column), NULL, default (a SQL
+  expression such as `0`, `'new'` or `CURRENT_TIMESTAMP`), key and auto-numbering (only when a column is created).
+  *Indexes*, *Foreign keys* (the table it points at, its columns, ON DELETE / ON UPDATE) and *Checks* work the same way.
+  A table with unsaved edits has to be committed or discarded first; after a change its open tabs are closed.
+- **Review SQL.** The designer's **Review SQL...** and every other structure action show the SQL, with warnings, before
+  anything runs. **Run** executes it as one transaction (MySQL and MariaDB do not roll back structure changes, and the window
+  says so if a script stops half way); read-only connections refuse it, confirming connections ask, and the production lock
+  asks for the connection name. It is recorded in the change log. **Open in a query tab** lets you edit it first.
+- **SQLite.** SQLite can add, rename and drop plain columns and indexes in place. Anything else (a type, NULL or default
+  change, the primary key, foreign keys, checks) rebuilds the table: copy the rows into a new table and swap it in. The review
+  lists the steps and warns that triggers on the table must be recreated by hand.
+- **Other objects.** Functions, procedures, triggers, sequences and materialized views are listed below the tables. Double-click
+  one to read its source in a query tab; right-click for *Show definition* and *Drop...*.
+- **Generate SQL.** SELECT, INSERT, UPDATE and DELETE templates with the columns written out (a `?` marks each value to fill in),
+  plus the table's CREATE and DROP statements, open in a query tab.
+
 ## Plans, diagrams and comparing data
 - **Explain (query plan).** In a query tab, **Explain** (Ctrl+L) shows how the engine would run the statement at the caret
   or the selection, step by step: the operation, what it works on, estimated rows and cost, and each step's share of the

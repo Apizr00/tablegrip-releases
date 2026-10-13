@@ -3,6 +3,33 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.7.0] - 2026-10-13
+
+### Added
+- **Table designer.** Right-click a table > *Design table...* (or *New table...* in the Database menu, or Ctrl+K) to edit its
+  columns (name, type, NULL, default, key, auto-numbering), indexes (including unique ones), foreign keys (with ON DELETE and
+  ON UPDATE) and checks. Renaming a column renames it in the indexes and keys that use it. Nothing changes until you choose
+  *Review SQL...*.
+- **Review SQL.** Every structure change (designer, rename, drop, new schema or database) opens a window with the exact
+  statements and what to watch out for. *Run* executes them in one transaction (safe mode and the production lock apply, and
+  the change goes into the change log); *Copy SQL* and *Open in a query tab* let you run or adjust it yourself.
+- **SQLite changes it cannot make in place.** Changing a column's type, nullability or default, the primary key, a foreign key
+  or a check makes SQLite rebuild the table: a new table is created, the rows are copied, and it replaces the old one. The
+  review says so and warns that triggers on the table are not recreated.
+- **Routines, triggers, sequences and materialized views** are listed in the sidebar below the tables (PostgreSQL: functions,
+  procedures, triggers, sequences, materialized views; MySQL and MariaDB: functions, procedures, triggers; SQL Server:
+  functions, procedures, triggers, sequences; SQLite: triggers). Double-click one to read its source in a query tab; right-click
+  to drop it.
+- **Generate SQL.** Right-click a table > *Generate SQL* for a SELECT, INSERT, UPDATE or DELETE with its columns written out,
+  or its CREATE or DROP statement, in a query tab.
+- **Drop and rename** a table or view from its right-click menu; *New view...* starts a CREATE VIEW in a query tab.
+- **Schemas and databases.** Database > *New schema...*, *Drop schema...* (PostgreSQL and SQL Server), *New database...* and
+  *Drop database...* (server engines).
+
+### Notes
+- The statements for PostgreSQL, MySQL, MariaDB and SQL Server are covered by tests on their text; the SQLite ones are also
+  run against real files. They have not been run against live servers yet, so read the review before you run it there.
+
 ## [1.6.0] - 2026-10-13
 
 ### Added

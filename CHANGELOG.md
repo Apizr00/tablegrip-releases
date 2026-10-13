@@ -3,6 +3,27 @@
 All notable changes to TableGrip. The format follows [Keep a Changelog](https://keepachangelog.com/), and versions
 follow [Semantic Versioning](https://semver.org/).
 
+## [1.5.0] - 2026-10-13
+
+### Added
+- **Format SQL.** Ctrl+Shift+F (or Format on the run bar, or Query > Format SQL) lays out the selection, or all the SQL:
+  one clause per line, one select item per line, AND / OR under WHERE, subqueries, CASE and CREATE TABLE indented,
+  keywords in capitals. Only white space and the case of keywords change; strings, names and comments stay as they are.
+  It is an edit like any other, so Ctrl+Z takes it back.
+- **Find and replace.** Ctrl+H opens a bar above the editor with Find next, Replace, Replace all, Match case, Whole word and
+  Regex (with `$1` in the replacement). Replace all is one undo step.
+- **Code folding.** Statements of several lines, bracketed groups, CASE and BEGIN blocks, block comments and dollar-quoted
+  bodies get fold markers in the margin.
+- **Split editor.** Split (Ctrl+\) shows a second view of the same text under the first, to read one part of a long script
+  while editing another. Zoom the text with Ctrl+wheel; Ctrl+0 resets it.
+- **Connection URLs.** Paste `postgres://user:password@host:5432/db?sslmode=require` (or a `mysql://`, `mariadb://`,
+  `sqlserver://` or `sqlite:` URL) into the host box of a new connection and the form fills in: host, port, database, user,
+  password and TLS mode.
+- **Connect timeout and retries.** Each connection has a timeout (1 to 300 seconds) and a number of retries (0 to 5) for when
+  the server cannot be reached. A wrong password is never retried; each retry is noted in the console log.
+- **Menus.** The ⋮ menu of a connection is grouped as File, Edit, View, Connection, Database, Query, Tools, Window and Help.
+  New: **Window > New window** (Ctrl+Shift+N) and **Connection > Reconnect**; both are also in the command palette.
+
 ## [1.4.1] - 2026-10-13
 
 ### Changed

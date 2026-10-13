@@ -16,6 +16,15 @@
 5. **Group pictures.** Right-click a group and choose *Set picture...* to show an image beside its name. The image is
    cropped to a square and scaled down; *Remove picture* clears it. Pictures are kept with the group on this computer
    (in `connections.json`) and are not part of an exported connections file.
+6. **Connection URL.** Instead of filling in each box, paste a URL into the **Host** box, for example
+   `postgres://app:secret@db.example.com:5432/shop?sslmode=require`. TableGrip fills in host, port, database, user, password
+   and the TLS mode. It understands `postgres://`, `postgresql://`, `mysql://`, `mariadb://`, `sqlserver://` (with
+   `;databaseName=...;user=...` properties) and `sqlite:` URLs, `jdbc:` in front, and `%40`-style escapes in the password.
+   A URL for another engine than the one you are editing is refused with a message.
+7. **Timeout and retries.** *Timeout (s)* is how long to wait for the server (default 15). *Retries* is how many more
+   times to try when the server cannot be reached (a timeout, a refused or dropped connection); a wrong password or an
+   unknown database is never retried. Each retry is written to the console log.
+
 
 ### Passwords
 - *Store securely* encrypts the password for your Windows account. It is never written to `connections.json`.
@@ -98,6 +107,11 @@ The **⋮** button at the top right of the start screen opens a menu: **File** (
 restore, exit), **View** (theme), **Tools** (preferences) and **Help** (user guide, report a problem, releases, check for
 updates, **About TableGrip**).
 
+Inside a connection, the **⋮** button beside the sidebar button opens the same actions grouped as **File**, **Edit**, **View**,
+**Connection** (reconnect, disconnect, health), **Database** (refresh, ER diagram, backup, restore), **Query** (run, run
+all, explain, format, cancel), **Tools** (compare data, change log), **Window** (new window, next and previous tab) and
+**Help**. **Ctrl+K** finds any of them by typing.
+
 ## Several connections at once
 
 The **new connection button** (a database with a plus) at the top left of a connection opens the **Open connection** list. Pick one (search, group folding,
@@ -155,6 +169,17 @@ screen, and one more press closes the application. If any open connection has un
 | Run every statement | Ctrl+Shift+Enter |
 | Stop | Esc |
 | Suggest names | Ctrl+Space (also automatic after two letters or a dot) |
+| Format the SQL | Ctrl+Shift+F |
+| Find and replace | Ctrl+H |
+| Split the editor / zoom | Ctrl+ / Ctrl+wheel, Ctrl+0 resets |
+
+**Format, find and fold.** **Format** (Ctrl+Shift+F) lays out the selection, or all the SQL, with one clause per line, one
+select item per line and keywords in capitals; nothing but white space and keyword case changes, and Ctrl+Z undoes it.
+**Ctrl+H** opens find and replace above the editor (Match case, Whole word, Regex with `$1` groups; *Replace all* is one
+undo step). Ctrl+F still opens the editor's own search. The margin has fold markers for multi-line statements, bracketed
+groups, CASE and BEGIN blocks and block comments. **Split** (Ctrl+\) shows a second view of the same text below the first.
+**Ctrl+wheel** zooms the text of the tab and **Ctrl+0** resets it. Hold **Alt** and drag to select a block of columns
+(box selection) and type to change every line of it at once.
 
 **Parameters.** Write `:name` in a query (`WHERE customer_id = :id`) and TableGrip asks for the value each time it runs;
 the values are sent as parameters, never pasted into the text. Leave a box empty or type NULL for NULL; numbers and
@@ -219,6 +244,7 @@ Both are in the workspace menu (the button beside the sidebar) and in the comman
 | Ctrl+P | Search tables and saved queries |
 | Ctrl+N / Ctrl+O | New connection / open file |
 | Ctrl+T / Ctrl+W | New query tab / close tab |
+| Ctrl+Shift+N | New window |
 | Ctrl+Tab, Ctrl+Shift+Tab | Next / previous tab |
 | F5 | Refresh |
 | Ctrl+F | Filter the sidebar (or search connections) |
